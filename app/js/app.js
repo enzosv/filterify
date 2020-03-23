@@ -35,9 +35,6 @@ function populateTable() {
 }
 
 window.addEventListener('load', function() {
-  filters.forEach(function(filter) {
-    filter.createUI()
-  })
   getLikedSongs(
     TOKEN,
     "https://api.spotify.com/v1/me/tracks?limit=" + TRACK_FETCH_LIMIT + "&offset=0")

@@ -56,6 +56,7 @@ function getLikedSongs(token, url) {
     } else {
       getTrackFeatures(token, ids, function() {
         filters.forEach(function(filter) {
+          filter.createUI()
           filter.setupSlider(filter)
         })
         populateTable()

@@ -4,7 +4,7 @@ function Filter(key) {
   this.key = key
 
   this.createUI = function() {
-    $('<div class="range-slider" id="' + this.key + 'Slider">' + this.key + '<input type="text" class="js-range-slider"/></div>').appendTo('#sidebar');
+    $('<ul class="range-slider" id="' + this.key + 'Slider">' + this.key + '<input type="text" class="js-range-slider"/></ul>').appendTo('#filterList');
   }
 
   this.setupSlider = function(filter) {

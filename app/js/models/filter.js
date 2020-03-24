@@ -37,7 +37,6 @@ function Filter(key) {
 
     function onStart(data) {
       addMarks(data.slider)
-      updateInputs(data)
     }
 
     function addMarks($slider) {

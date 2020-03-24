@@ -38,6 +38,6 @@ function eraseCookie(name) {
 
 function handleUnauthorized(xhr, status, error) {
   if (xhr.status === 401) {
-      window.location.href = window.location.origin
+      window.location.href = window.location.href.replace("/app","")
   }
 }

@@ -36,6 +36,14 @@ function populateTable() {
 
 window.addEventListener('load', function() {
   console.log("Contribute at: https://github.com/enzosv/filterify/")
+  var TODO = ["Make table instead of page scrollable",
+    "Filter by year", "Add sort functinoality",
+    "Loading indicators",
+    "Success indicator",
+    "Error messages",
+    "Think of a better name"
+  ]
+  console.log("TODO:\n\t" + TODO.join("\n\t"))
   getLikedSongs(
     TOKEN,
     "https://api.spotify.com/v1/me/tracks?limit=" + TRACK_FETCH_LIMIT + "&offset=0")

@@ -26,15 +26,15 @@
   <script src="js/app.js"></script>
 </head>
 
-<body>
+<body class="bg-dark">
   <div class="wrapper">
     <!-- Sidebar  -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="bg-secondary">
       <div class="sidebar-header">
         <h3>Filterify</h3>
         <p>Filter your liked Spotify songs into custom playlists with similar attributes</p>
       </div>
-      <ul class="list-unstyled components" id="filterList">
+      <ul class="list-unstyled CTAs bg-dark" id="filterList">
       </ul>
       <ul class="list-unstyled CTAs">
         <li>
@@ -51,21 +51,19 @@
           </button>
         </div>
       </nav>
-      <table class="col-lg table table-dark">
+      <table class="table table-dark table-responsive table-hover">
         <thead>
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Artist</th>
             <th scope="col">Album</th>
           </tr>
-        </thead>
+        </thead class="thead-dark">
         <tbody id="songList">
         </tbody>
       </table>
     </div>
   </div>
-  <!-- Popper.JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   <script type="text/javascript">

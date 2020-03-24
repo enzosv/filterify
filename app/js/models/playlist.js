@@ -8,9 +8,11 @@ function generatePlaylist(name) {
 
 function getMe(token, completion) {
   var settings = ajaxSettings(token, "https://api.spotify.com/v1/me")
-  $.ajax(settings).done(function(response) {
-    completion(response.id)
-  });
+  $.ajax(settings)
+    .fail(handleUnauthorized)
+    .done(function(response) {
+      completion(response.id)
+    });
 }
 
 function createPlaylist(token, userID, name, completion) {
@@ -28,9 +30,11 @@ function createPlaylist(token, userID, name, completion) {
     "data": '{"name":"' + name + '","description":"enzo made this","public":false}'
   }
 
-  $.ajax(settings).done(function(response) {
-    completion(response.id)
-  });
+  $.ajax(settings)
+    .fail(handleUnauthorized)
+    .done(function(response) {
+      completion(response.id)
+    });
 }
 
 function addSongsToPlaylist(token, playlistID, tracks) {

@@ -46,9 +46,10 @@ function populateTable() {
 window.addEventListener('load', function() {
   console.log("Contribute at: https://github.com/enzosv/filterify/")
   var TODO = [
-    "Make table instead of page scrollable",
-    "Filter by year",
-    "Add sort functinoality",
+    "Better login",
+    "Make table body scrollable instead of page",
+    "Highlight tooltip for key words",
+    "Add sort functionality",
     "Loading indicators",
     "Success indicator",
     "Error messages",

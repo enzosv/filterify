@@ -1,7 +1,7 @@
 function generatePlaylist(name) {
   getMe(TOKEN, function(userID) {
     createPlaylist(TOKEN, userID, name, function(playlistID) {
-      addSongsToPlaylist(TOKEN, playlistID, clone(tracks))
+      addSongsToPlaylist(TOKEN, playlistID, tracks)
     })
   })
 }
@@ -46,11 +46,12 @@ function clone(obj) {
     return copy;
 }
 
-function addSongsToPlaylist(token, playlistID, songs) {
+function addSongsToPlaylist(token, playlistID, tracks) {
   var uris = []
-  for (var i = 0; i < songs.length; i++) {
-    var track = songs[i]
-    songs.shift()
+  var copy = clone(tracks)
+  for (var i = 0; i < tracks.length; i++) {
+    var track = tracks[i]
+    copy.shift()
     if (track.passesFilters(filters)) {
       uris.push(track.uri)
       if (uris.length === 100) {
@@ -78,8 +79,8 @@ function addSongsToPlaylist(token, playlistID, songs) {
   $.ajax(settings)
     .fail(handleUnauthorized)
     .done(function(response) {
-      if (songs.length > 0) {
-        addSongsToPlaylist(token, playlistID, songs)
+      if (copy.length > 0) {
+        addSongsToPlaylist(token, playlistID, copy)
       }
     });
 }

@@ -18,7 +18,7 @@ function Track(item) {
     }
     var row = document.createElement('TR')
     row.appendChild(generateCell(this.name))
-    row.appendChild(generateCell(this.artists))
+    row.appendChild(generateCell(this.artists.join(", ")))
     row.appendChild(generateCell(this.album))
     return row
   }

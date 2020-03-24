@@ -57,15 +57,21 @@ function getLikedSongs(token, url) {
         getTrackFeatures(token, ids, function() {})
         getLikedSongs(token, response.next)
       } else {
-
         getTrackFeatures(token, ids, function() {
-          console.log("setting up UI")
-          filters.forEach(function(filter) {
-            filter.createUI()
-            filter.setupSlider(filter)
-          })
-          populateTable()
+          setupViews()
         })
       }
     });
+}
+
+function compare(trackA, trackB, key) {
+  var valueA = trackA.audio_features[key] || trackA[key].toLowerCase()
+  var valueB = trackB.audio_features[key] || trackB[key].toLowerCase()
+  if (valueA < valueB) {
+    return 1
+  }
+  if (valueA > valueB) {
+    return -1
+  }
+  return 0
 }

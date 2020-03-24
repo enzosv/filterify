@@ -27,7 +27,7 @@ function createPlaylist(token, userID, name, completion) {
       "authorization": "Bearer " + token
     },
     "processData": false,
-    "data": '{"name":"' + name + '","description":"enzo made this","public":false}'
+    "data": '{"name":"' + name + '","description":"https://enzosv.github.io/filterify","public":false}'
   }
 
   $.ajax(settings)

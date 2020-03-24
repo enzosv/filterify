@@ -17,7 +17,9 @@ function AudioFeature(item) {
 function getTrackFeatures(token, trackIDs, completion) {
   var settings = ajaxSettings(token, "https://api.spotify.com/v1/audio-features?ids=" + trackIDs)
 
-  $.ajax(settings).done(function(response) {
+  $.ajax(settings)
+  .fail(handleUnauthorized)
+  .done(function(response) {
     response.audio_features.forEach(function(feature) {
       var index = tracks.findIndex(function(track) {
         return track.id === feature.id

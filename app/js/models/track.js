@@ -42,25 +42,27 @@ function getLikedSongs(token, url) {
   console.log("Fetching: " + url)
   var settings = ajaxSettings(token, url)
 
-  $.ajax(settings).done(function(response) {
-    var fetchedTracks = response.items.map(function(item) {
-      return new Track(item)
-    })
-    tracks = tracks.concat(fetchedTracks)
-    var ids = fetchedTracks.map(function(track) {
-      return track.id
-    })
-    if (response.next != null) {
-      getTrackFeatures(token, ids, function() {})
-      getLikedSongs(token, response.next)
-    } else {
-      getTrackFeatures(token, ids, function() {
-        filters.forEach(function(filter) {
-          filter.createUI()
-          filter.setupSlider(filter)
-        })
-        populateTable()
+  $.ajax(settings)
+    .fail(handleUnauthorized)
+    .done(function(response) {
+      var fetchedTracks = response.items.map(function(item) {
+        return new Track(item)
       })
-    }
-  });
+      tracks = tracks.concat(fetchedTracks)
+      var ids = fetchedTracks.map(function(track) {
+        return track.id
+      })
+      if (response.next != null) {
+        getTrackFeatures(token, ids, function() {})
+        getLikedSongs(token, response.next)
+      } else {
+        getTrackFeatures(token, ids, function() {
+          filters.forEach(function(filter) {
+            filter.createUI()
+            filter.setupSlider(filter)
+          })
+          populateTable()
+        })
+      }
+    });
 }

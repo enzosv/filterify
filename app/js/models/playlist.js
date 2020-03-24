@@ -51,8 +51,10 @@ function addSongsToPlaylist(token, playlistID, tracks) {
     },
     "processData": false,
     "data": '{"uris":[' + uris.join(",") + ']}'
+  $.ajax(settings)
+    .fail(handleUnauthorized)
+    .done(function(response) {
+      console.log(response);
+    });
   }
-  $.ajax(settings).done(function(response) {
-    console.log(response);
-  });
 }

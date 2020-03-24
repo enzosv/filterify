@@ -3,9 +3,6 @@ const filters = ["danceability", "energy", "tempo", "valence", "acousticness", "
   return new Filter(key)
 })
 const TRACK_FETCH_LIMIT = 50
-const urlParams = new URLSearchParams(window.location.hash)
-const TOKEN = urlParams.get('#access_token')
-window.location.hash = ""
 
 function ajaxSettings(token, url) {
   return {

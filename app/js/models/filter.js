@@ -8,31 +8,25 @@ function Filter(key) {
   }
 
   this.setupSlider = function(filter) {
-    var $slider = $("#" + this.key + "Slider")
-    var $range = $slider.find(".js-range-slider"),
-      $inputFrom = $slider.find(".js-input-from"),
-      $inputTo = $slider.find(".js-input-to"),
-      instance,
-      min = filter.min,
-      max = filter.max,
-      from = 0,
-      to = 0;
+    var $range = $("#" + this.key + "Slider").find(".js-range-slider")
     var step = 0.01
     if(filter.max > 1){
     	step = 1
     }
     $range.ionRangeSlider({
-      skin: "round",
+      skin: "flat",
       type: "double",
-      min: min,
-      max: max,
+      min: filter.min,
+      max: filter.max,
       from: filter.min,
       to: filter.max,
       onStart: updateInputs,
       onChange: updateInputs,
-      step: step
+      step: step,
+      force_edges: true,
+      hide_min_max: true,
+      hide_from_to: true
     });
-    instance = $range.data("ionRangeSlider");
 
     function updateInputs(data) {
       from = data.from;

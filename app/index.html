@@ -39,7 +39,12 @@
       </ul>
       <ul class="list-unstyled CTAs">
         <li>
-          <button class="btn-dark btn btn-primary btn-lg btn-block" onclick="generatePlaylist()">Generate Playlist</button>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Playlist name" id="playlistName">
+            <div class="input-group-append">
+              <button class="btn btn-dark" onclick="generatePlaylist(document.getElementById('playlistName').value)" type="button">Generate</button>
+            </div>
+          </div>
         </li>
       </ul>
     </nav>

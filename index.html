@@ -5,6 +5,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-	<button class="btn btn-primary btn-lg btn-block" onclick="location.href = 'https://accounts.spotify.com/authorize?client_id=e6e90f5f95774f93979fb3f06389544a&response_type=token&redirect_uri=https://enzosv.github.io/filterify/app&scope=user-read-private user-library-read playlist-modify-private'">Login</button>
+	<button class="btn btn-primary btn-lg btn-block" onclick="location.href = 'https://accounts.spotify.com/authorize?client_id=e6e90f5f95774f93979fb3f06389544a&response_type=token&redirect_uri='+window.location.href+'app&scope=user-read-private user-library-read playlist-modify-private'">Login with Spotify</button>
 </body>
 </html>

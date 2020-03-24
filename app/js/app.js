@@ -31,6 +31,7 @@ function populateTable() {
     }
   })
   oldBody.parentNode.replaceChild(newBody, oldBody)
+  document.getElementById("countLabel").innerHTML = "Song count: " + newBody.rows.length
 }
 
 window.addEventListener('load', function() {

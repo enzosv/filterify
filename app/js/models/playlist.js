@@ -38,11 +38,19 @@ function createPlaylist(token, userID, name, completion) {
 }
 
 function addSongsToPlaylist(token, playlistID, tracks) {
-  var uris = tracks.filter(function(track) {
-    return track.passesFilters(filters)
-  }).map(function(track) {
-    return '"' + track.uri + '"'
-  })
+  var songs = tracks
+  var uris = []
+  for (var i = 0; i < tracks.length; i++) {
+    var track = tracks[i]
+    songs.shift()
+    if (track.passesFilters) {
+      uris.push(track.uri)
+      if (uris.length === 100) {
+        break
+      }
+    }
+  }
+  console.log({ "uris": uris }.toString())
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -54,11 +62,15 @@ function addSongsToPlaylist(token, playlistID, tracks) {
       "authorization": "Bearer " + token
     },
     "processData": false,
-    "data": '{"uris":[' + uris.join(",") + ']}'
+    "data": JSON.stringify({ "uris": uris })
+  }
+
   $.ajax(settings)
     .fail(handleUnauthorized)
     .done(function(response) {
       console.log(response);
+      if (songs.length > 0) {
+        addSongsToPlaylist(token, playlistID, songs)
+      }
     });
-  }
 }

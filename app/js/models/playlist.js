@@ -1,7 +1,7 @@
 function generatePlaylist(name) {
   getMe(TOKEN, function(userID) {
     createPlaylist(TOKEN, userID, name, function(playlistID) {
-      addSongsToPlaylist(TOKEN, playlistID, tracks)
+      addSongsToPlaylist(TOKEN, playlistID, clone(tracks))
     })
   })
 }
@@ -37,20 +37,30 @@ function createPlaylist(token, userID, name, completion) {
     });
 }
 
-function addSongsToPlaylist(token, playlistID, tracks) {
-  var songs = tracks
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
+
+function addSongsToPlaylist(token, playlistID, songs) {
   var uris = []
-  for (var i = 0; i < tracks.length; i++) {
-    var track = tracks[i]
+  for (var i = 0; i < songs.length; i++) {
+    var track = songs[i]
     songs.shift()
-    if (track.passesFilters) {
+    if (track.passesFilters(filters)) {
       uris.push(track.uri)
       if (uris.length === 100) {
         break
       }
     }
   }
-  console.log({ "uris": uris }.toString())
+  if(uris.length === 0) {
+    return
+  }
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -68,7 +78,6 @@ function addSongsToPlaylist(token, playlistID, tracks) {
   $.ajax(settings)
     .fail(handleUnauthorized)
     .done(function(response) {
-      console.log(response);
       if (songs.length > 0) {
         addSongsToPlaylist(token, playlistID, songs)
       }

@@ -1,5 +1,5 @@
+var TOKEN
 saveToken()
-const TOKEN = readCookie("access_token")
 
 function saveToken(){
     var urlParams = new URLSearchParams(window.location.hash)
@@ -7,9 +7,11 @@ function saveToken(){
     window.location.search)
     var access_token = urlParams.get('#access_token')
     if(access_token == null) {
+    TOKEN = readCookie("access_token")
         return
     }
-    createCookie("access_token", urlParams.get('#access_token'), urlParams.get('expires_in'))
+    TOKEN = access_token
+    createCookie("access_token", access_token, urlParams.get('expires_in'))
 }
 
 function createCookie(name, value, expiration_ms) {

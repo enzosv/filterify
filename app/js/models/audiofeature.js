@@ -1,4 +1,4 @@
-function AudioFeature(item) {
+function AudioFeature(item, track) {
   this.danceability = item.danceability
   this.energy = item.energy
   this.tempo = item.tempo
@@ -12,6 +12,7 @@ function AudioFeature(item) {
   // this.liveness = item.liveness
   // this.duration_ms = item.duration_ms
   // this.time_signature = item.time_signature
+  this.popularity = track.popularity
 }
 
 function getTrackFeatures(token, trackIDs, completion) {
@@ -24,8 +25,9 @@ function getTrackFeatures(token, trackIDs, completion) {
       var index = tracks.findIndex(function(track) {
         return track.id === feature.id
       })
-      var audioFeature = new AudioFeature(feature)
-      tracks[index].audio_features = audioFeature
+      var track = tracks[index]
+      var audioFeature = new AudioFeature(feature, track)
+      track.audio_features = audioFeature
       filters.forEach(function(filter) {
         var value = audioFeature[filter.key]
         if (filter.min > value) {

@@ -1,5 +1,5 @@
 var tracks = []
-const filters = ["danceability", "energy", "tempo", "valence", "acousticness", "instrumentalness"].map(function(key) {
+const filters = ["danceability", "energy", "tempo", "valence", "acousticness", "instrumentalness", "popularity"].map(function(key) {
   return new Filter(key)
 })
 const TRACK_FETCH_LIMIT = 50

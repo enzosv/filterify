@@ -8,6 +8,7 @@ function Track(item) {
   this.popularity = item.track.popularity
   this.id = item.track.id
   this.uri = item.track.uri
+  this.date = new Date(item.track.album.release_date)
 
   this.row = function() {
     function generateCell(field) {

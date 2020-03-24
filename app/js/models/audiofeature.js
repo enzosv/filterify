@@ -12,6 +12,7 @@ function AudioFeature(item, track) {
   // this.liveness = item.liveness
   // this.duration_ms = item.duration_ms
   // this.time_signature = item.time_signature
+  this.date = track.date
   this.popularity = track.popularity
 }
 

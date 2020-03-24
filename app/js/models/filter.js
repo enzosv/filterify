@@ -4,14 +4,14 @@ function Filter(key) {
   this.key = key
 
   this.createUI = function() {
-    $('<li class="range-slider" id="' + this.key + 'Slider">' + this.key + '<input type="text" class="js-range-slider"/></li>').appendTo('#filterList');
+    $('<li class="range-slider" id="' + this.key + 'Slider"><input type="text" class="js-range-slider"/></li>').appendTo('#filterList');
   }
 
   this.setupSlider = function(filter) {
     var $range = $("#" + this.key + "Slider").find(".js-range-slider")
     var step = 0.01
-    if(filter.max > 1){
-    	step = 1
+    if (filter.max > 1) {
+      step = 1
     }
     $range.ionRangeSlider({
       skin: "flat",
@@ -20,7 +20,7 @@ function Filter(key) {
       max: filter.max,
       from: filter.min,
       to: filter.max,
-      onStart: updateInputs,
+      onStart: onStart,
       onChange: updateInputs,
       step: step,
       force_edges: true,
@@ -34,6 +34,17 @@ function Filter(key) {
       filter.min = data.from
       filter.max = data.to
       populateTable()
+    }
+
+    function onStart(data) {
+      addMarks(data.slider)
+      updateInputs(data)
+    }
+
+    function addMarks($slider) {
+      var name = filter.key.charAt(0).toUpperCase() + filter.key.slice(1)
+      var html = '<span class="mylabel">' + name + '</span>';
+      $slider.append(html);
     }
   }
 }

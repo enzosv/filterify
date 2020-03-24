@@ -34,6 +34,7 @@ function populateTable() {
 }
 
 window.addEventListener('load', function() {
+  console.log("Contribute at: https://github.com/enzosv/filterify/")
   getLikedSongs(
     TOKEN,
     "https://api.spotify.com/v1/me/tracks?limit=" + TRACK_FETCH_LIMIT + "&offset=0")

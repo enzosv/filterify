@@ -37,3 +37,17 @@ ul.CTAs {
     min-height: 100vh;
     transition: all 0.3s;
 }
+
+/* ---------------------------------------------------
+    MINE
+----------------------------------------------------- */
+a {
+    color: #1DB954 !important;
+}
+
+.mylabel {
+    display: block;
+    position: absolute;
+    top: 1px;
+    margin-left: 1px;
+}

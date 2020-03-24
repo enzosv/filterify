@@ -1,6 +1,6 @@
-function generatePlaylist() {
+function generatePlaylist(name) {
   getMe(TOKEN, function(userID) {
-    createPlaylist(TOKEN, userID, "test", function(playlistID) {
+    createPlaylist(TOKEN, userID, name, function(playlistID) {
       addSongsToPlaylist(TOKEN, playlistID, tracks)
     })
   })

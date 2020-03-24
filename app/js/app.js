@@ -1,5 +1,14 @@
 var tracks = []
-const filters = ["danceability", "energy", "tempo", "valence", "acousticness", "instrumentalness", "popularity"].map(function(key) {
+const filters = [
+  "danceability",
+  "energy",
+  "tempo",
+  "valence",
+  "acousticness",
+  "instrumentalness",
+  "popularity",
+  "year"
+].map(function(key) {
   return new Filter(key)
 })
 const TRACK_FETCH_LIMIT = 50
@@ -36,8 +45,10 @@ function populateTable() {
 
 window.addEventListener('load', function() {
   console.log("Contribute at: https://github.com/enzosv/filterify/")
-  var TODO = ["Make table instead of page scrollable",
-    "Filter by year", "Add sort functinoality",
+  var TODO = [
+    "Make table instead of page scrollable",
+    "Filter by year",
+    "Add sort functinoality",
     "Loading indicators",
     "Success indicator",
     "Error messages",

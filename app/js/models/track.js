@@ -8,7 +8,7 @@ function Track(item) {
   this.popularity = item.track.popularity
   this.id = item.track.id
   this.uri = item.track.uri
-  this.date = new Date(item.track.album.release_date)
+  this.year = Number(item.track.album.release_date.substring(0,4))
 
   this.row = function() {
     function generateCell(field) {
@@ -57,7 +57,9 @@ function getLikedSongs(token, url) {
         getTrackFeatures(token, ids, function() {})
         getLikedSongs(token, response.next)
       } else {
+
         getTrackFeatures(token, ids, function() {
+          console.log("setting up UI")
           filters.forEach(function(filter) {
             filter.createUI()
             filter.setupSlider(filter)

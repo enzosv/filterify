@@ -1,8 +1,7 @@
 function Filter(key) {
-  this.min = 1000
+  this.min = Number.MAX_SAFE_INTEGER
   this.max = 0
   this.key = key
-
   this.createUI = function() {
     $('<li class="range-slider" id="' + this.key + 'Slider"><input type="text" class="js-range-slider"/></li>').appendTo('#filterList');
   }

@@ -65,8 +65,8 @@ function getLikedSongs(token, url) {
 }
 
 function compare(trackA, trackB, key) {
-  var valueA = trackA.audio_features[key] || trackA[key].toLowerCase()
-  var valueB = trackB.audio_features[key] || trackB[key].toLowerCase()
+  var valueA = trackA.audio_features[key] || trackA[key]
+  var valueB = trackB.audio_features[key] || trackB[key]
   if (valueA < valueB) {
     return 1
   }
